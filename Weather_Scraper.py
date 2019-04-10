@@ -9,8 +9,5 @@ page = requests.get("https://weather.com/weather/tenday/l/USCA1209:1:US")
 soup = BeautifulSoup(page.content, "html.parser")
 city = soup.find("div", class_="locations-title ten-day-page-title").get_text()
 tenday = soup.find("table", class_="twc-table").get_text()
-if (city[-16] == 1):
-    city = city[0:-32]
-else:
-    city = city[0:-31]
+city = city.replace(r"10 Day Weather[1][1-9]:[0-9][0-9] [ap]m PDTPrint".format(time), " ", 1)
 print("Weather forecast for {} \nCurrent Temperature: {}\n{}".format(city, temperature, tenday))
