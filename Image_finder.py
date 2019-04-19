@@ -18,16 +18,11 @@ def downloadimages(query):
             response.download(arguments)
         except:
             pass
-        
-for (query) in list:
-    downloadimages(query)
-    print()
-response = google_images_download.googleimagesdownload()
-search_query = []
+
+
 
 def fill_query(list):
     list.append(input("What do you want in your search query: "))
-    answer = input("Would you like to add something else y/n:  ")
     resp(list)
     
 def resp(list):
@@ -35,11 +30,17 @@ def resp(list):
     if (answer == "y"):
         fill_query(list)
     elif(answer == "n"):
-        downloadimages(list)
+        pass
     else:
         print("That is not a valid answer")
         resp(list)
         
-  
+response = google_images_download.googleimagesdownload()
+search_query = []
+fill_query(search_query)
+
+for (query) in search_query:
+    downloadimages(query)
+    print()
         
 response = google_images_download.googleimagesdownload()
